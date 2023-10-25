@@ -20,7 +20,7 @@ public class Student {
     private LocalDate birthDate;
     @Column(length = 11, unique = true, columnDefinition = "CHAR(11)")
     private String cpf;
-    @Column(length = 7, unique = true)
+    @Column(length = 10, unique = true)
     private String rg;
     @Column(length = 1, nullable = false, columnDefinition = "CHAR(1)")
     private String gender;

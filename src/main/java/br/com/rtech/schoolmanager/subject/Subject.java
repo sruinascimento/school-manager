@@ -5,6 +5,7 @@ import br.com.rtech.schoolmanager.teacher.Teacher;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -31,4 +32,48 @@ public class Subject {
             joinColumns = @JoinColumn(name = "subject_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     List<Student> students = new ArrayList<>();
+
+    @Deprecated
+    public Subject() {
+    }
+
+    public Subject(String name, String code, int creditHours, Shift shift, Teacher teacher) {
+        this.name = name;
+        this.code = code;
+        this.creditHours = creditHours;
+        this.shift = shift;
+        this.teacher = teacher;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public int getCreditHours() {
+        return creditHours;
+    }
+
+    public Shift getShift() {
+        return shift;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public List<Student> getStudents() {
+        return Collections.unmodifiableList(students);
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
+    }
 }
