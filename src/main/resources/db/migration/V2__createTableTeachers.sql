@@ -7,5 +7,4 @@ CREATE TABLE teachers
     rg                VARCHAR(10) UNIQUE,
     gender            CHAR(1)     NOT NULL,
     area_of_expertise VARCHAR(50) NOT NULL
-
 );

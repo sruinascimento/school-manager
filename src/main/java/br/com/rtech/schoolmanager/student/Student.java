@@ -1,5 +1,6 @@
 package br.com.rtech.schoolmanager.student;
 
+import br.com.rtech.schoolmanager.person.Person;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Past;
 
@@ -9,12 +10,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "students")
-public class Student {
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Long id;
-    @Column(length = 50, nullable = false)
-    private String name;
+public class Student extends Person {
     @Past
     @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
@@ -31,21 +27,18 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, LocalDate birthDate, String cpf, String rg, String gender, String registrationNumber) {
-        this.name = name;
+    public Student(String name,
+                   LocalDate birthDate,
+                   String cpf,
+                   String rg,
+                   String gender,
+                   String registrationNumber) {
+        super(name);
         this.birthDate = birthDate;
         this.cpf = cpf;
         this.rg = rg;
         this.gender = gender;
         this.registrationNumber = registrationNumber;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public LocalDate getBirthDate() {
